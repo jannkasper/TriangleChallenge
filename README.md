@@ -17,6 +17,7 @@ It is necessary to be sure if user enters
 * only 3 arguments,
 * each of argument being double value, 
 * arguments which allow to build Triangle.
+
 After that, the program can create new Triangle with a parameter of input arguments and select type of triangle
 
 ## Display all Triangles without duplicates
