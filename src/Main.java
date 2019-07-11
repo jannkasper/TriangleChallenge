@@ -2,6 +2,9 @@ import domains.Triangle;
 import repositories.TriangleRepository;
 import validators.TriangleValidator;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -41,16 +44,35 @@ public class Main {
                 case "e":
                     System.out.println("--- Display last Triangle ---");
                     Triangle triangle = TriangleRepository.getTriangleLast();
-                    System.out.println(triangle.getTriangleType() + " | " + Arrays.toString(triangle.getTriangleSides()));
+                    System.out.println(triangle.getTriangleType() + " \t " + Arrays.toString(triangle.getTriangleSides()));
                     break;
 
                 case "f":
+                    BufferedReader reader;
+                    try {
+                        System.out.println("--- Upload file with Triangles ---");
+                        System.out.print("Write down File name: ");
+                        String fileName = scan.nextLine();
+                        reader = new BufferedReader(new FileReader("./resources/" + fileName));
+                        String line = reader.readLine();
+                        while (line != null) {
+                            String[] triangleSidesFile = line.split(" ");
+                            if (TriangleValidator.checkIfThreeSides(triangleSidesFile) && TriangleValidator.checkIfValueIsNumeric(triangleSidesFile) && TriangleValidator.checkIfSidesCanBuildTriangle(triangleSidesFile)) {
+                                Triangle triangleFile = new Triangle(triangleSidesFile);
+                                TriangleRepository.addTriangle(triangleFile);
+                            }
+                            line = reader.readLine();
+                        }
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case "g":
                     System.out.println("--- Display all Triangle ---");
                     for (Triangle trianglee : TriangleRepository.getTriangleList()){
-                        System.out.println(trianglee.getTriangleType() + " | " + Arrays.toString(trianglee.getTriangleSides()));
+                        System.out.println(trianglee.getTriangleType() + " \t " + Arrays.toString(trianglee.getTriangleSides()));
                     }
                     break;
             }
