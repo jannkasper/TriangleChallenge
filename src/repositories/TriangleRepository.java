@@ -1,9 +1,6 @@
 package repositories;
 
 import domains.Triangle;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,9 +13,11 @@ public class TriangleRepository {
         triangleLinkedList.add(triangle);
     }
 
-    public static List<Triangle> getTriangleList() {
-
-//        return new LinkedList<>(new HashSet<>(triangleLinkedList));
+    /**
+     * Method returns List of Triangle class object without duplicates.
+     * @return List of Triangle objects
+     */
+    public static List<Triangle> getUniqueTriangleList() {
 
         return triangleLinkedList
                 .stream()
@@ -26,9 +25,15 @@ public class TriangleRepository {
                 .collect(Collectors.toList());
     }
 
-    public static Triangle getTriangleLast() {
-        return triangleLinkedList.get(triangleLinkedList.size()-1);
+    /**
+     * Method returns last added Triangle object
+     * @return Triangle object
+     */
+    public static Triangle getLastTriangle() {
+        return triangleLinkedList.get(triangleLinkedList.size() - 1);
     }
 
-
+    public static void setTriangleLinkedList(LinkedList<Triangle> triangleLinkedList) {
+        TriangleRepository.triangleLinkedList = triangleLinkedList;
+    }
 }

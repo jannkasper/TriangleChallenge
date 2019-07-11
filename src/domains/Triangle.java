@@ -1,7 +1,6 @@
 package domains;
 
 import enums.TriangleType;
-
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -12,8 +11,6 @@ public class Triangle {
 
     public Triangle(String[] triangleSides) {
 
-        Arrays.sort(triangleSides);
-
         this.triangleSides = Arrays
                 .asList(triangleSides)
                 .stream()
@@ -21,31 +18,34 @@ public class Triangle {
                 .sorted()
                 .toArray();
 
-        this.triangleType = TrinagleAnalyzer();
+        this.triangleType = resolveTriangleType();
     }
 
-    private TriangleType TrinagleAnalyzer () {
+    /**
+     * Method returns Triangle Type based on study of the Triangle Sides length
+     * @return enum Triangle Type
+     */
+    private TriangleType resolveTriangleType() {
 
-        if (triangleSides[0] == triangleSides[1] && triangleSides[1] == triangleSides[2])
+        if (triangleSides[0] == triangleSides[1] && triangleSides[1] == triangleSides[2]) {
             return TriangleType.EQUILATERAL;
-
-        if (triangleSides[0] == triangleSides[1] || triangleSides[1] == triangleSides[2])
+        } else if (triangleSides[0] == triangleSides[1] || triangleSides[1] == triangleSides[2]) {
             return TriangleType.ISOSCELES;
-
-        return TriangleType.SCALENE;
-
+        } else {
+            return TriangleType.SCALENE;
+        }
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object object) {
+        if (object == null || getClass() != object.getClass()) return false;
 
-        Triangle triangle = (Triangle) o;
+        Triangle triangle = (Triangle) object;
 
-        if(triangleType != triangle.triangleType) return false;
+        if (triangleType != triangle.triangleType) return false;
 
-        for (int i = 0; i <triangle.triangleSides.length; i++){
-            if( this.triangleSides[i] != triangle.triangleSides[i]) return false;
+        for (int i = 0; i < triangle.triangleSides.length; i++) {
+            if (this.triangleSides[i] != triangle.triangleSides[i]) return false;
         }
 
         return true;
@@ -62,18 +62,8 @@ public class Triangle {
         return triangleSides;
     }
 
-    public void setTriangleSides(double[] triangleSides) {
-        this.triangleSides = triangleSides;
-    }
-
     public TriangleType getTriangleType() {
         return triangleType;
     }
-
-    public void setTriangleType(TriangleType triangleType) {
-        this.triangleType = triangleType;
-    }
-
-
 
 }
