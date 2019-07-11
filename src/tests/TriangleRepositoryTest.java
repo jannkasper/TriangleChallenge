@@ -21,9 +21,9 @@ public class TriangleRepositoryTest {
         Triangle triangle = new Triangle(arguments);
         TriangleRepository.addTriangle(triangle);
         //when
-        Triangle validationResult = TriangleRepository.getLastTriangle();
+        Triangle result = TriangleRepository.getLastTriangle();
         //then
-        Assert.assertEquals(triangle, validationResult);
+        Assert.assertEquals(triangle, result);
     }
 
     @Test
@@ -41,8 +41,8 @@ public class TriangleRepositoryTest {
         TriangleRepository.addTriangle(triangle);
 
         //when
-        long validationResult = TriangleRepository.getUniqueTriangleList().size();
+        long result = TriangleRepository.getUniqueTriangleList().size();
         //then
-        Assert.assertEquals(2, validationResult);
+        Assert.assertEquals(2, result);
     }
 }

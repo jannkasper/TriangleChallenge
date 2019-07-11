@@ -13,9 +13,9 @@ public class TriangleTest {
         String[] arguments = {"5.396", "6.456", "7.906"};
         Triangle triangle = new Triangle(arguments);
         // when
-        TriangleType validationResult = triangle.getTriangleType();
+        TriangleType result = triangle.getTriangleType();
         // then
-        Assert.assertEquals(TriangleType.SCALENE, validationResult);
+        Assert.assertEquals(TriangleType.SCALENE, result);
     }
 
     @Test
@@ -24,9 +24,9 @@ public class TriangleTest {
         String[] arguments = {"5.396", "5.396", "7.906"};
         Triangle triangle = new Triangle(arguments);
         // when
-        TriangleType validationResult = triangle.getTriangleType();
+        TriangleType result = triangle.getTriangleType();
         // then
-        Assert.assertEquals(TriangleType.ISOSCELES, validationResult);
+        Assert.assertEquals(TriangleType.ISOSCELES, result);
     }
 
     @Test
@@ -35,9 +35,9 @@ public class TriangleTest {
         String[] arguments = {"5.396", "5.396", "5.396"};
         Triangle triangle = new Triangle(arguments);
         // when
-        TriangleType validationResult = triangle.getTriangleType();
+        TriangleType result = triangle.getTriangleType();
         // then
-        Assert.assertEquals(TriangleType.EQUILATERAL, validationResult);
+        Assert.assertEquals(TriangleType.EQUILATERAL, result);
     }
 
 }

@@ -11,9 +11,9 @@ public class TriangleValidatorTest {
         // given
         String[] arguments = {"5.396", "6.456", "7.906"};
         // when
-        boolean validationResult = TriangleValidator.checkNumberOfArguments(arguments);
+        boolean result = TriangleValidator.checkNumberOfArguments(arguments);
         // then
-        Assert.assertTrue(validationResult);
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -21,9 +21,9 @@ public class TriangleValidatorTest {
         // given
         String[] arguments = {"5.396", "6.456", "7.906", "8.123"};
         // when
-        boolean validationResult = TriangleValidator.checkNumberOfArguments(arguments);
+        boolean result = TriangleValidator.checkNumberOfArguments(arguments);
         // then
-        Assert.assertFalse(validationResult);
+        Assert.assertFalse(result);
     }
 
     @Test
@@ -31,9 +31,9 @@ public class TriangleValidatorTest {
         // given
         String[] arguments = {"5.396", "6.456", "7.906"};
         // when
-        boolean validationResult = TriangleValidator.checkIfValueIsNumeric(arguments);
+        boolean result = TriangleValidator.checkIfValueIsNumeric(arguments);
         // then
-        Assert.assertTrue(validationResult);
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -41,9 +41,9 @@ public class TriangleValidatorTest {
         // given
         String[] arguments = {"5.396", "6.4ff", "7.906"};
         // when
-        boolean validationResult = TriangleValidator.checkIfValueIsNumeric(arguments);
+        boolean result = TriangleValidator.checkIfValueIsNumeric(arguments);
         // then
-        Assert.assertFalse(validationResult);
+        Assert.assertFalse(result);
     }
 
     @Test
@@ -51,9 +51,9 @@ public class TriangleValidatorTest {
         // given
         String[] arguments = {"5.396", "6.456", "7.906"};
         // when
-        boolean validationResult = TriangleValidator.checkIfSidesCanBuildTriangle(arguments);
+        boolean result = TriangleValidator.checkIfSidesCanBuildTriangle(arguments);
         // then
-        Assert.assertTrue(validationResult);
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -61,8 +61,8 @@ public class TriangleValidatorTest {
         // given
         String[] arguments = {"5.396", "60.456", "7.906"};
         // when
-        boolean validationResult = TriangleValidator.checkIfSidesCanBuildTriangle(arguments);
+        boolean result = TriangleValidator.checkIfSidesCanBuildTriangle(arguments);
         // then
-        Assert.assertFalse(validationResult);
+        Assert.assertFalse(result);
     }
 }
